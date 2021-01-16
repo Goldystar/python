@@ -1,0 +1,19 @@
+import wmi
+
+wmi_obj = wmi.WMI()
+wmi_sql = "select IPAddress,DefaultIPGateway from Win32_NetworkAdapterConfiguration where IPEnabled=TRUE"
+wmi_out = wmi_obj.query( wmi_sql )
+
+# for dev in wmi_out:
+#     list1 = str(dev.DefaultIPGateway)
+
+listA = (wmi_out[0])
+listB = listA.DefaultIPGateway
+list1 = str(listB)
+list2 = list1.replace(",","")
+list3 = list2.replace("'","")
+list4 = list3.replace("(","")
+list5 = list4.replace(")","")
+print (list5)
+
+# "IPv4Address:", dev.IPAddress[0],
